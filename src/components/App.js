@@ -35,12 +35,12 @@ class App extends Component {
     return (
       <div className="Clock">
         <h3 id="time">
-          `{this.state.timehr > 12 ? this.state.timehr - 12 : this.state.timehr}
+          {this.state.timehr > 12 ? this.state.timehr - 12 : this.state.timehr}
           :{this.state.timemin}:
           {this.state.timesec < 10
             ? "0" + this.state.timesec
             : this.state.timesec}{" "}
-          {this.state.timehr > 12 ? "PM" : "AM"}`
+          {this.state.timehr > 12 ? "PM" : "AM"}
         </h3>
       </div>
     );
