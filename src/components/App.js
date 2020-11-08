@@ -46,7 +46,7 @@ class App extends Component {
           {this.state.timesec < 10
             ? "0" + this.state.timesec
             : this.state.timesec}{" "}
-          {this.state.timehr > 12 ? "PM" : "AM"}
+          {this.state.timehr >= 12 ? "PM" : "AM"}
         </h3>
       </div>
     );
