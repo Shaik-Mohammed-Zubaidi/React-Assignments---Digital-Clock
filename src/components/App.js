@@ -19,11 +19,18 @@ class App extends Component {
       timesec: date.getSeconds()
     });
     this.tid = setInterval(() => {
-      var date = new Date();
+      let thrs = this.state.timehr;
+      let tmins = this.state.timemin;
+      let tsecs = this.state.timesec;
+
+      thrs = tmins === 59 && tsecs === 59 ? (thrs + 1) % 24 : thrs;
+      tmins = tsecs === 59 ? (tmins + 1) % 60 : tmins;
+      tsecs = (tsecs + 1) % 60;
+
       this.setState({
-        timehr: date.getHours(),
-        timemin: date.getMinutes(),
-        timesec: date.getSeconds()
+        timehr: thrs,
+        timemin: tmins,
+        timesec: tsecs
       });
     }, 1000);
   }
@@ -35,8 +42,7 @@ class App extends Component {
     return (
       <div className="Clock">
         <h3 id="time">
-          {this.state.timehr}
-          :{this.state.timemin}:
+          {this.state.timehr}:{this.state.timemin}:
           {this.state.timesec < 10
             ? "0" + this.state.timesec
             : this.state.timesec}{" "}
